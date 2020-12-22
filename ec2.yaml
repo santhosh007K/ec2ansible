@@ -1,4 +1,5 @@
 # Basic provisioning example
+---
 - amazon.aws.ec2:
     key_name: ec2ansible.pem
     instance_type: t2.micro
