@@ -3,7 +3,7 @@
   tasks:
   - name: install ec2
     amazon.aws.ec2:
-      key_name: ec2ansible.pem
+      key_name: ec2ansible
       instance_type: t2.micro
       image: ami-08f63db601b82ff5f
       count: 1
