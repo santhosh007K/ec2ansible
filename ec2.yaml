@@ -1,5 +1,5 @@
 # Basic provisioning example
-- hosts: all
+- hosts: localhost
   tasks:
   - name: install ec2
     amazon.aws.ec2:
