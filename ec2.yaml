@@ -8,6 +8,19 @@
     image: ami-08f63db601b82ff5f
     region: ap-south-1
   tasks:
+    - name: my_securitygroup
+      amazon.aws.ec2_group:
+        name: "{{ name }}"
+        description: sg with rule descriptions
+        vpc_id: vpc-07f308b689640512e
+        profile: "{{ aws_profile }}"
+        region: ap-south-1
+        rules:
+          - proto: tcp
+            ports:
+            - 80
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port 80
     - name: Launch instance
       amazon.aws.ec2:
          key_name: "{{ keypair }}"
