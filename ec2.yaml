@@ -8,12 +8,12 @@
     image: ami-08f63db601b82ff5f
     region: ap-south-1
   tasks:
-    - name: my_securitygroup
+    - name: my_securitygroup creation
       amazon.aws.ec2_group:
-        name: "{{ name }}"
+        name: my_securitygroup
         description: sg with rule descriptions
         vpc_id: vpc-07f308b689640512e
-        profile: "{{ aws_profile }}"
+        #profile: "{{ aws_profile }}"
         region: ap-south-1
         rules:
           - proto: tcp
