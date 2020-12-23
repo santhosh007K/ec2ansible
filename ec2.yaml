@@ -1,11 +1,46 @@
-# Basic provisioning example
-- hosts: localhost
+- name: Create a sandbox instance
+  hosts: localhost
+  gather_facts: False
+  vars:
+    keypair: ec2ansible
+    instance_type: t2.micro
+    security_group: my_securitygroup
+    image: ami-08f63db601b82ff5f
+    region: ap-south-1
   tasks:
-  - name: install ec2
-    amazon.aws.ec2:
-      key_name: ec2ansible
-      instance_type: t2.micro
-      image: ami-08f63db601b82ff5f
-      count: 1
-      vpc_subnet_id: subnet-0b32335e5e7fae710
-      assign_public_ip: yes
+    - name: Launch instance
+      amazon.aws.ec2:
+         key_name: "{{ keypair }}"
+         group: "{{ security_group }}"
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         volumes:
+           - device_name: /dev/xvda
+             volume_type: gp2
+             volume_size: 8
+         wait: true
+         region: "{{ region }}"
+         vpc_subnet_id: subnet-0b32335e5e7fae710
+         assign_public_ip: yes
+      register: ec2
+
+    - name: Add new instance to host group
+      add_host:
+        hostname: "{{ item.public_ip }}"
+        groupname: launched
+      loop: "{{ ec2.instances }}"
+
+    - name: Wait for SSH to come up
+      delegate_to: "{{ item.public_dns_name }}"
+      wait_for_connection:
+        delay: 60
+        timeout: 320
+      loop: "{{ ec2.instances }}"
+
+- name: Configure instance(s)
+  hosts: launched
+  become: True
+  gather_facts: True
+  roles:
+    - my_awesome_role
+    - my_awesome_test
