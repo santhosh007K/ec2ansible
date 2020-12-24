@@ -4,7 +4,7 @@
     community.aws.aws_codebuild:
       name: my_project
       description: My nice little project
-      service_role: "arn:aws:iam::434156974348:role/service-role/my_project-ec2-codebuild-service-role"
+      service_role: "arn:aws:iam::434156974348:role/service-role/codebuild-ec2-codebuild-service-role"
       source:
         # Possible values: BITBUCKET, CODECOMMIT, CODEPIPELINE, GITHUB, S3
         type: CODEPIPELINE
