@@ -18,5 +18,8 @@ Phases:
       - ansible-galaxy collection install amazon.aws
   build:
     commands:
-      - chmod 600 ec2.yaml
-      - ansible-playbook ec2.yaml
+      #- chmod 600 ec2.yaml
+      #- ansible-playbook ec2.yaml
+      - chmod 600 codebuild.yml
+      - ansible-playbook codebuild.yml
+      
