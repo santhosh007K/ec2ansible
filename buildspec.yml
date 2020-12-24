@@ -20,6 +20,9 @@ Phases:
     commands:
       #- chmod 600 ec2.yaml
       #- ansible-playbook ec2.yaml
-      - chmod 600 codebuild.yml
-      - ansible-playbook codebuild.yml
+      #- chmod 600 codebuild.yml
+      #- ansible-playbook codebuild.yml
+      - chmod 600 cloudform.yaml
+      - ansible-playbook cloudform.yaml
+      
       
