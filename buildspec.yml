@@ -22,7 +22,7 @@ Phases:
       #- ansible-playbook ec2.yaml
       #- chmod 600 codebuild.yml
       #- ansible-playbook codebuild.yml
-      - chmod 600 cloudform.yaml
-      - ansible-playbook cloudform.yaml
+      - chmod 600 cloudform.yml
+      - ansible-playbook cloudform.yml
       
       
