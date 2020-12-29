@@ -413,6 +413,7 @@ Resources:
     Type: 'AWS::EC2::Subnet'
     Properties:
       VpcId: !Ref VPC
+      Az: ap-south-1a
       CidrBlock: 10.0.0.0/24
       Tags:
         - Key: Application
