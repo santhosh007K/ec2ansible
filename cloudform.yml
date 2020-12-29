@@ -2,10 +2,10 @@
   tasks:
   - name: create a cloudformation stack
     amazon.aws.cloudformation:
-      stack_name: "ansible-cloudformation-ec2"
+      stack_name: "ansible-cloudformation-ec2-vpc"
       state: "present"
       region: "ap-south-1"
       disable_rollback: true
-      template: "ec2-cloudformation.yml"
+      template: "VPC_Single_Instance_In_Subnet.yml"
       tags:
         Stack: "ansible-cloudformation"
