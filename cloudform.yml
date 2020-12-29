@@ -7,5 +7,8 @@
       region: "ap-south-1"
       disable_rollback: true
       template: "VPC_Single_Instance_In_Subnet.yml"
+      template_parameters:
+        KeyName: "ec2ansible"
+        InstanceType: "t2.micro"
       tags:
         Stack: "ansible-cloudformation"
