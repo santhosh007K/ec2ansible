@@ -7,7 +7,7 @@
       role_arn: arn:aws:iam::434156974348:role/AWS-CodePipeline-Service
       artifact_store:
         type: S3
-        location: my_s3_codepipline_bucket
+        location: mys3codepiplinebucket
       stages:
         - name: Get_source
           actions:
