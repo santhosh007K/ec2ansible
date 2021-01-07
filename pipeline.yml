@@ -1,6 +1,9 @@
 # Example for creating a pipeline for continuous deploy of Github code to an ECS cluster (container)
 - hosts: localhost
   tasks:
+  - name: create iam role
+    command:
+      aws iam create-role --role-name AWSCodePipelineServiceRole-ap-south-1-new --assume-role-policy-document '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Principal":{"Service":"codepipeline.amazonaws.com"},"Action":"sts:AssumeRole"}}'
   - name: code build settup
     community.aws.aws_codepipeline:
       name: my_deploy_pipeline
