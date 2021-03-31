@@ -1,0 +1,11 @@
+- hosts: localhost
+  tasks:
+  - name: create a cloudformation stack
+    amazon.aws.cloudformation:
+      stack_name: "ansible-cloudformation-s3"
+      state: "present"
+      region: "ap-south-1"
+      disable_rollback: true
+      template: "s3-template.yml"
+      tags:
+        Stack: "ansible-cloudformation-s3"
