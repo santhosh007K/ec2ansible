@@ -8,7 +8,7 @@
       disable_rollback: true
       template: "VPC_Single_Instance_In_Subnet.yml"
       template_parameters:
-        KeyName: "ec2ansible"
+        KeyName: "basil-mum-newkey"
         InstanceType: "t2.micro"
       tags:
         Stack: "ansible-cloudformation"
